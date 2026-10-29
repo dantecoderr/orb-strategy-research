@@ -1,0 +1,19 @@
+TQQQ under the paper's rules ($0.0005/share/side commission, no slippage, no other costs)
+
+                                                rule                                      window  trades  total_return_pct  cagr_pct  max_dd_pct  sharpe  win_rate  avg_R  cap_binds_pct
+ORB stop + 10R target / EoD (paper's main TQQQ rule) 2019-01-01 to 2023-02-17 (paper's end date)    1031            258.56     36.27      -35.35    1.01     23.76   0.15           5.43
+ORB stop + 10R target / EoD (paper's main TQQQ rule)                2019-2025 (full sample here)    1742            746.05     35.70      -35.35    0.99     23.94   0.15           6.26
+                                      ORB stop + EoD 2019-01-01 to 2023-02-17 (paper's end date)    1031            225.63     33.13      -35.35    0.94     23.67   0.15           5.43
+                                      ORB stop + EoD                2019-2025 (full sample here)    1742           1195.29     44.22      -35.35    1.08     23.82   0.19           6.26
+                    5% ATR stop + EoD (paper Sec. 4) 2019-01-01 to 2023-02-17 (paper's end date)    1017           1091.31     83.86      -47.69    1.29     10.52   0.43          44.64
+                    5% ATR stop + EoD (paper Sec. 4)                2019-2025 (full sample here)    1728           4340.16     72.76      -53.25    1.18     10.24   0.39          57.12
+
+NQ futures ORB (ORB stop + EoD, 2019-2025), signal-level statistics, no costs
+  trades 1799, win rate 23.7%, long share 50.8%, avg R 0.161
+  2019 - Feb 2023 only: trades 1062, win rate 23.4%, avg R 0.128
+
+Paper's reported numbers (2016 - 17 Feb 2023, IB data, QQQ / TQQQ):
+  ORB QQQ : 1,795 trades, 51% long / 49% short, win rate 24%, avg PnL 0.13R, total return 676%, 33%/yr, Sharpe 1.13, MDD 22%
+  ORB TQQQ: total return 1,484%, 48%/yr, Sharpe 1.19, MDD 28%, avg 0.18R, exposure capped on ~10% of days
+  TQQQ, 5% ATR stop + EoD: +9,350% (text; the equity curve axis reaches $6.4M, which would be a larger multiple), alpha 93%
+

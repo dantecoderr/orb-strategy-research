@@ -1,0 +1,81 @@
+
+=== 1. EOD exit bar: 16:00 vs 15:59 ===
+strategy                 session  trades   total   max_dd  profit_dd  win_rate
+     orb session to 16:00 (orig)    1799 6980.50 -1741.00       4.01     23.62
+     orb        session to 15:59    1799 7764.50 -1743.00       4.45     23.68
+     atr session to 16:00 (orig)    1785 4427.01 -1135.67       3.90     10.25
+     atr        session to 15:59    1785 4314.59 -1321.24       3.27     10.14
+
+=== 2. Total points after removing the best k trades ===
+strategy  removed_top     total  avg_per_trade
+     orb            0   7764.50           4.32
+     orb            1   5770.25           3.21
+     orb            5   3451.25           1.92
+     orb           10   1210.00           0.68
+     orb           20  -2660.00          -1.50
+     orb           50 -11200.00          -6.40
+     atr            0   4314.59           2.42
+     atr            1   3805.84           2.13
+     atr            5   2059.09           1.16
+     atr           10    213.34           0.12
+     atr           20  -2594.66          -1.47
+     atr           50  -9095.16          -5.24
+orb: best trade = 1994.2 pts = 26% of total; top-20 = 10424 pts; median trade = -23.0; winners = 23.7%
+atr: best trade = 508.8 pts = 12% of total; top-20 = 6909 pts; median trade = -11.2; winners = 10.1%
+
+=== 3. i.i.d. bootstrap of trades (10,000 resamples) ===
+strategy  total_5pct  total_median  total_95pct  P_total_le_0  sharpe_5pct  sharpe_median  sharpe_95pct
+     orb     851.963      7757.875    14984.012         0.032        0.085          0.690         1.212
+     atr     570.281      4251.721     8210.213         0.029        0.099          0.685         1.213
+
+=== 4. Cost sensitivity (points per NQ contract; $ per round trip in usd_rt) ===
+strategy  roundtrip_pts  extra_stop_slip_pts  usd_rt    total   avg  sharpe_ann
+     orb            0.0                  0.0     0.0  7764.50  4.32        0.68
+     orb            0.0                  0.5     0.0  7087.50  3.94        0.62
+     orb            0.5                  0.0    10.0  6865.00  3.82        0.60
+     orb            0.5                  0.5    10.0  6188.00  3.44        0.54
+     orb            1.0                  0.0    20.0  5965.50  3.32        0.52
+     orb            1.0                  0.5    20.0  5288.50  2.94        0.46
+     orb            1.5                  0.0    30.0  5066.00  2.82        0.44
+     orb            1.5                  0.5    30.0  4389.00  2.44        0.38
+     orb            2.0                  0.0    40.0  4166.50  2.32        0.37
+     orb            2.0                  0.5    40.0  3489.50  1.94        0.31
+     orb            3.0                  0.0    60.0  2367.50  1.32        0.21
+     orb            3.0                  0.5    60.0  1690.50  0.94        0.15
+     orb            4.0                  0.0    80.0   568.50  0.32        0.05
+     orb            4.0                  0.5    80.0  -108.50 -0.06       -0.01
+     atr            0.0                  0.0     0.0  4314.59  2.42        0.69
+     atr            0.0                  0.5     0.0  3514.09  1.97        0.56
+     atr            0.5                  0.0    10.0  3422.09  1.92        0.55
+     atr            0.5                  0.5    10.0  2621.59  1.47        0.42
+     atr            1.0                  0.0    20.0  2529.59  1.42        0.41
+     atr            1.0                  0.5    20.0  1729.09  0.97        0.28
+     atr            1.5                  0.0    30.0  1637.09  0.92        0.26
+     atr            1.5                  0.5    30.0   836.59  0.47        0.13
+     atr            2.0                  0.0    40.0   744.59  0.42        0.12
+     atr            2.0                  0.5    40.0   -55.91 -0.03       -0.01
+     atr            3.0                  0.0    60.0 -1040.41 -0.58       -0.17
+     atr            3.0                  0.5    60.0 -1840.91 -1.03       -0.29
+     atr            4.0                  0.0    80.0 -2825.41 -1.58       -0.45
+     atr            4.0                  0.5    80.0 -3625.91 -2.03       -0.58
+orb: break-even round-trip cost = 4.32 pts ($86); 75% of trades exit at a stop
+atr: break-even round-trip cost = 2.42 pts ($48); 90% of trades exit at a stop
+
+=== 5. Equal-risk compounding on R-multiples (no costs; fractional contracts) ===
+strategy  risk_per_trade  CAGR_pct  maxDD_pct  Calmar  sharpe_ann  final_mult  avg_notional_leverage
+     orb           0.005    20.199    -19.660   1.027       0.928       3.622                  2.977
+     orb           0.010    38.269    -36.269   1.055       0.928       9.647                  5.954
+     atr           0.005    42.958    -44.209   0.972       1.109      11.946                  6.605
+     atr           0.010    81.382    -70.105   1.161       1.109      62.338                 13.211
+
+=== 6. Points by year ===
+      orb_pts  orb_n  atr_pts  atr_n
+date                                
+2019    523.5    256    745.5    242
+2020   -383.8    258    206.1    258
+2021   1027.2    257   1237.9    257
+2022   2047.2    258    527.1    258
+2023    161.0    254    818.4    254
+2024   2136.0    259   -108.8    259
+2025   2253.2    257    888.4    257
+ORB: share of total from 2025: 29 %

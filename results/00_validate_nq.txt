@@ -1,0 +1,4 @@
+loaded 694,623 1m rows, 140,324 5m rows, 1806 days in 12s
+
+ORIGINAL ORB {'trades': 1799, 'total': np.float64(6980.5), 'avg': np.float64(3.88), 'win_rate': np.float64(23.624), 'max_dd': np.float64(-1741.0), 'profit_dd': np.float64(4.009), 'avg_R': np.float64(0.151), 'trade_sharpe_R': np.float64(0.055), 'sharpe_points_ann': np.float64(0.614)}
+ATR 5% ORB   {'trades': 1785, 'total': np.float64(4427.012), 'avg': np.float64(2.48), 'win_rate': np.float64(10.252), 'max_dd': np.float64(-1135.669), 'profit_dd': np.float64(3.898), 'avg_R': np.float64(0.329), 'trade_sharpe_R': np.float64(0.07), 'sharpe_points_ann': np.float64(0.712)}

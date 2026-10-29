@@ -1,0 +1,61 @@
+=== 1. Session end ===
+               session strategy  trades  final_equity  cagr_pct  max_dd_pct  calmar  sharpe_ann  avg_leverage  cap_binds_pct
+16:00 inclusive (orig)      orb    1742     297280.89     42.47      -35.69    1.19        1.05          1.73           6.60
+16:00 inclusive (orig)      atr    1728    1735926.46     84.27      -56.09    1.50        1.29          3.50          56.89
+          15:59 strict      orb    1742     372642.51     47.14      -34.98    1.35        1.12          1.73           6.60
+          15:59 strict      atr    1728    2397908.58     93.05      -54.42    1.71        1.35          3.50          57.12
+
+=== 2. Stop distance (risk per share) ===
+orb: median 15.5c, p10 4.5c, p90 35.5c | share <=2c: 2%, <=3c: 5%, <=5c: 13% | avg profit/share 2.61c
+atr: median 5.5c, p10 1.7c, p90 11.3c | share <=2c: 12%, <=3c: 17%, <=5c: 43% | avg profit/share 1.79c
+median stop (cents) by year:
+ date  2019  2020  2021  2022  2023  2024  2025
+orb    4.2  11.8  21.5  19.1  11.6  19.3  27.5
+atr    1.4   4.3   6.4   6.0   4.1   7.1  10.0
+
+=== 3. Cost sensitivity (compounded, costs inside sizing) ===
+strategy  roundtrip_cents  extra_stop_slip_cents  final_equity  cagr_pct  max_dd_pct  calmar  sharpe_ann
+     orb              0.0                    0.0      372642.5      47.1       -35.0     1.3         1.1
+     orb              0.0                    1.0       93330.3      20.7       -40.3     0.5         0.6
+     orb              1.0                    0.0       65682.6      14.8       -41.4     0.4         0.5
+     orb              1.0                    1.0       16405.9      -5.8       -78.0    -0.1         0.1
+     orb              2.0                    0.0       11540.0     -10.5       -83.6    -0.1        -0.1
+     orb              2.0                    1.0        2889.9     -26.5       -95.1    -0.3        -0.5
+     orb              3.0                    0.0        2035.0     -30.1       -96.4    -0.3        -0.7
+     orb              3.0                    1.0         508.3     -42.7       -99.0    -0.4        -1.1
+     atr              0.0                    0.0     2397908.6      93.0       -54.4     1.7         1.4
+     atr              0.0                    1.0      118321.0      25.1       -69.6     0.4         0.6
+     atr              1.0                    0.0       83778.0      19.0       -70.2     0.3         0.6
+     atr              1.0                    1.0        4099.9     -22.9       -88.9    -0.3        -0.1
+     atr              2.0                    0.0        2904.7     -26.7       -91.8    -0.3        -0.2
+     atr              2.0                    1.0         144.4     -52.4       -99.5    -0.5        -0.9
+     atr              3.0                    0.0         102.2     -54.7       -99.7    -0.5        -1.0
+     atr              3.0                    1.0           9.5     -70.7      -100.0    -0.7        -1.9
+
+=== 4. Leverage cap and participation (uncosted) ===
+orb: cap binds on 7% of trades | shares/first-5m-volume: median 0.4%, p90 1.2%, max 4% | >5% of bar volume: 0% of trades | 2024-25 avg notional $0.4M, avg shares 9,202
+atr: cap binds on 57% of trades | shares/first-5m-volume: median 4.8%, p90 17.1%, max 34% | >5% of bar volume: 49% of trades | 2024-25 avg notional $5.9M, avg shares 147,819
+
+=== 5. Calendar-year return (%, compounded, uncosted) ===
+      orb_ret_%  atr_ret_%
+yr                        
+2019       83.0      242.0
+2020       21.0      172.0
+2021       34.0      104.0
+2022       43.0        7.0
+2023       16.0      154.0
+2024       52.0       27.0
+2025       99.0       46.0
+
+=== 6. Compounded result with the best k trades (by R) removed ===
+strategy  removed_best  final_equity  cagr_pct  max_dd_pct
+     orb             0      372642.5      47.1       -35.0
+     orb             1      294624.4      42.3       -35.0
+     orb             5      148698.9      29.0       -36.5
+     orb            10       76353.7      17.3       -37.6
+     orb            20       27900.9       1.6       -37.6
+     atr             0     2397908.6      93.0       -54.4
+     atr             1     1895951.4      86.6       -54.4
+     atr             5      772945.5      64.0       -54.4
+     atr            10      331294.2      45.1       -56.7
+     atr            20       59416.1      13.3       -73.5

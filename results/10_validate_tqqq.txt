@@ -1,0 +1,7 @@
+session rows 686,594 (notebook: 686,594) | 5m rows 138,919 (notebook: 138,919)
+                   trades  final_equity  return_pct  cagr_pct  max_dd_usd  profit_dd  max_dd_pct  calmar  sharpe_ann  win_rate  avg_R  avg_shares  avg_risk_pct  avg_leverage  cap_binds_pct
+ORB stop + 10R TP  1742.0     242925.41      871.70     38.41   -49056.74       4.44      -33.28    1.15        1.04     23.94   0.16     6903.48          0.98          1.73           6.60
+ORB stop + EOD     1742.0     297280.89     1089.12     42.47   -56584.04       4.81      -35.69    1.19        1.05     23.77   0.19     6729.77          0.98          1.73           6.60
+5% ATR stop + EOD  1728.0    1735926.46     6843.71     84.27  -571438.82       2.99      -56.09    1.50        1.29     10.59   0.42    77391.59          0.85          3.50          56.89
+
+notebook: 10R  final 242,911 / 1742 trades / DD -49,052 | ORB+EOD final 297,282 / DD -56,586 | ATR final 1,736,021 / 1728 trades / DD -570,950
